@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "FBText",
+    "version": "1",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.facebook.com/home.php"
+            ],
+            "js": [
+                "hide-user-content.js"
+            ]
+        }
+    ]
+}
