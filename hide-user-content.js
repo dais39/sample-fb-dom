@@ -1,10 +1,12 @@
 const hide_user_content = () => {
     const elementList = document.getElementsByClassName('userContent');
 
+    // 投稿されたテキストを全て非表示にする
     // while (elements.length !== 0) {
     //     elements[0].parentNode.removeChild(elements[0]);
     // }
 
+    // 投稿されたテキストを取得してコンソールに表示する
     let text = '';
     for (el of elementList) {
         const pList = el.getElementsByTagName('p');
