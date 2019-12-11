@@ -8,7 +8,7 @@
                 "https://www.facebook.com/home.php"
             ],
             "js": [
-                "hide-user-content.js"
+                "index.js"
             ]
         }
     ]
