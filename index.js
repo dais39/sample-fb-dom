@@ -22,18 +22,6 @@ const generateText = (text) => {
     return el;
 }
 
-const postApi = (text) => {
-    const req = new XMLHttpRequest();
-    const baseUrl = "http://localhost:8080/transform";
-    const requestBody = {
-        text: text
-    };
-
-    req.open("POST", baseUrl, true);
-    req.setRequestHeader("Content-type", "application/json;charset=UTF-8");
-    req.send(JSON.stringify(requestBody));
-}
-
 const filterUserPost = () => {
     const elementList = document.getElementsByClassName('userContent');
     for (el of elementList) {
@@ -42,15 +30,27 @@ const filterUserPost = () => {
         // 投稿テキストを取得
         let userText = parseText(pList);
         console.log(userText)
+        const textRequest = {
+            text: userText
+        }
 
         // テキストAPIを叩く
-        chrome.runtime.sendMessage({ text: userText }, function (response) {
+        chrome.runtime.sendMessage({ url: "http://localhost:8080/transform", data: textRequest }, function (response) {
             // userContent配下の要素を全消し
             removeAllChildren(el);
 
             // userContentの子要素としてpタグを追加
-            const newEl = generateText(response.text);
+            const newEl = generateText(response.data.text);
             el.appendChild(newEl);
+        });
+
+        const imgRequest = {
+            url: "foo",
+            alt: "画像に含まれている可能性があるもの:a、b、c、d"
+        }
+                // テキストAPIを叩く
+        chrome.runtime.sendMessage({ url: "http://localhost:8081/transform", data: imgRequest }, function (response) {
+            console.log(response.data.imgPath)
         });
     }
 }
