@@ -8,7 +8,8 @@
                 "https://www.facebook.com/home.php"
             ],
             "js": [
-                "index.js"
+                "index.js",
+                "jquery.min.js"
             ]
         }
     ],
@@ -16,6 +17,6 @@
         "http://localhost:8080/transform"
     ],
     "background": {
-		"scripts": ["index.js","background.js"]
+		"scripts": ["background.js","jquery.min.js"]
 	}
 }
