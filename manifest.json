@@ -11,5 +11,11 @@
                 "index.js"
             ]
         }
-    ]
+    ],
+    "permissions": [
+        "http://localhost:8080/transform"
+    ],
+    "background": {
+		"scripts": ["index.js","background.js"]
+	}
 }
